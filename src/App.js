@@ -1,10 +1,9 @@
-import Toggle from "./components/common/ThemeToggle";
+import Header from "./components/common/Header";
 
 const App = () => {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 h-screen">
-      <Toggle />
-      <h1>Hello World!</h1>
+      <Header />
     </div>
   );
 }
