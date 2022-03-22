@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <Popover className="relative bg-white">
       <div className="mx-auto px-4 sm:px-4">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center border-b-2 border-gray-100 py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="/">
               <span className="sr-only">Logo</span>
@@ -28,7 +28,7 @@ export default function Header() {
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
             <a
               href="/"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              className="font-fredoka font-medium text-gray-500 hover:text-gray-900"
             >
               ¿Que pokemon soy?
             </a>
@@ -37,9 +37,9 @@ export default function Header() {
             <Toggle />
             <a
               href="/"
-              className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-fredoka font-medium text-white bg-indigo-600 hover:bg-indigo-700"
             >
-              @ EslimDaga
+              @EslimDaga
             </a>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Header() {
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                 <a
                   href="/"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
+                  className="font-fredoka font-medium text-gray-900 hover:text-gray-700"
                 >
                   ¿Que pokemon soy?
                 </a>
@@ -88,9 +88,9 @@ export default function Header() {
               <div>
                 <a
                   href="/"
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-fredoka font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                 >
-                  @ EslimDaga
+                  @EslimDaga
                 </a>
               </div>
             </div>
