@@ -1,10 +1,13 @@
-import Header from "./components/common/Header";
+import { Routes, Route } from "react-router-dom";
+import Pokemons from "./views/Pokemons";
+import WhatPokemonAmI from "./views/WhatPokemonAmI";
 
 const App = () => {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 h-screen">
-      <Header />
-    </div>
+    <Routes>
+      <Route path="/" element={<Pokemons />} />
+      <Route path="/wath-pokemon-am-i" element={<WhatPokemonAmI />} />
+    </Routes>
   );
 }
 
