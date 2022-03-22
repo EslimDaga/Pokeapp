@@ -10,12 +10,12 @@ const Toggle = () => {
       {theme === "dark" ? (
         <SunIcon
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-gray-500 dark:text-gray-400 w-5 h-5 cursor-pointer"
+          className="text-gray-500 dark:text-gray-400 w-6 h-6 cursor-pointer"
         />
       ) : (
         <MoonIcon
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-gray-500 dark:text-gray-400 w-5 h-5 cursor-pointer"
+          className="text-gray-500 dark:text-gray-400 w-6 h-6 cursor-pointer"
         />
       )}
     </div>
