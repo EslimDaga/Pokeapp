@@ -7,7 +7,7 @@ import Logo from "../../assets/images/pokeapi.png";
 
 export default function Header() {
   return (
-    <Popover className="relative bg-white dark:bg-gray-900">
+    <Popover className="bg-white dark:bg-gray-900">
       <div className="mx-auto px-4 sm:px-4">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -57,7 +57,7 @@ export default function Header() {
       >
         <Popover.Panel
           focus
-          className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+          className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-10"
         >
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800 divide-y-2 divide-gray-50 dark:divide-gray-700">
             <div className="pt-5 pb-6 px-5">
