@@ -7,7 +7,7 @@ import Logo from "../../assets/images/pokeapi.png";
 
 export default function Header() {
   return (
-    <Popover className="relative bg-gray-100 dark:bg-gray-900">
+    <Popover className="relative bg-white dark:bg-gray-900">
       <div className="mx-auto px-4 sm:px-4">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
