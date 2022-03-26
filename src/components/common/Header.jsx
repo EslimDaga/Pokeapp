@@ -39,7 +39,7 @@ export default function Header() {
             <Toggle />
             <a
               href="/"
-              className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-fredoka font-medium text-white bg-yellow-400 hover:bg-yellow-500"
+              className="ml-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-fredoka font-medium text-white bg-blue-800 hover:bg-blue-900"
             >
               @EslimDaga
             </a>
@@ -82,14 +82,12 @@ export default function Header() {
                   ¿Que pokemon soy?
                 </a>
               </div>
-              <div>
-                <a
-                  href="/"
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-fredoka font-medium text-white bg-yellow-400 hover:bg-yellow-500"
-                >
-                  @EslimDaga
-                </a>
-              </div>
+              <a
+                href="/"
+                className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-fredoka font-medium text-white bg-blue-800 hover:bg-blue-900"
+              >
+                @EslimDaga
+              </a>
             </div>
           </div>
         </Popover.Panel>
