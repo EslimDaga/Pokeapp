@@ -15,17 +15,25 @@ const Pokemons = () => {
   const [listPokemons, setListPokemons] = useState([]);
   const [pokemons, setPokemons] = useState([]);
   const [filtering, setFiltering] = useState("");
+  const [link, setLink] = useState(
+    "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
+  );
+  const [paging, setPaging] = useState({});
 
   useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=20")
+    axios.get(link)
     .then(response => {
+      setPaging({
+        previous: response.data.previous,
+        next: response.data.next
+      })
       const promises = response.data.results.map(item => axios.get(item.url));
       Promise.all(promises).then((result) => {
         setPokemons(result);
         setListPokemons(result);
       })
     })
-  },[])
+  },[link])
 
   const handleChange = e => {
     setFiltering(e.target.value);
@@ -42,6 +50,14 @@ const Pokemons = () => {
   const clearFilter = () => {
     setFiltering("");
     setPokemons(listPokemons);
+  }
+
+  const previousPage = (previous) => {
+    setLink(previous)
+  }
+
+  const nextPage = (next) => {
+    setLink(next)
   }
 
   return (
@@ -66,8 +82,20 @@ const Pokemons = () => {
           )}
         </div>
         <div className="flex justify-center pt-4 sm:pt-0 md:pt-0 lg:pt-0">
-          <button><ArrowCircleLeftIcon className="w-10 h-10 text-blue-800 dark:text-gray-600" /></button>
-          <button><ArrowCircleRightIcon className="w-10 h-10 text-blue-800 dark:text-gray-600" /></button>
+          <button
+            onClick={() => previousPage(paging.previous)}
+            disabled={paging.previous ? false : true}
+            className={!paging.previous ? "cursor-not-allowed opacity-50" : ""}
+          >
+            <ArrowCircleLeftIcon className="w-10 h-10 text-blue-800 dark:text-gray-600" />
+          </button>
+          <button
+            onClick={() => nextPage(paging.next)}
+            disabled={paging.next ? false : true}
+            className={!paging.next ? "cursor-not-allowed opacity-50" : ""}
+          >
+            <ArrowCircleRightIcon className="w-10 h-10 text-blue-800 dark:text-gray-600" />
+          </button>
         </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
