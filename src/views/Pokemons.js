@@ -15,12 +15,14 @@ const Pokemons = () => {
   const [listPokemons, setListPokemons] = useState([]);
   const [pokemons, setPokemons] = useState([]);
   const [filtering, setFiltering] = useState("");
+  const [paging, setPaging] = useState({});
+  const [loading, setLoading] = useState(true);
   const [link, setLink] = useState(
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
   );
-  const [paging, setPaging] = useState({});
 
   useEffect(() => {
+    setLoading(true)
     axios.get(link)
     .then(response => {
       setPaging({
@@ -31,6 +33,7 @@ const Pokemons = () => {
       Promise.all(promises).then((result) => {
         setPokemons(result);
         setListPokemons(result);
+        setLoading(false);
       })
     })
   },[link])
@@ -99,26 +102,30 @@ const Pokemons = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {pokemons.map(({ data }) => (
-          <div
-            key={data.id}
-            className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg"
-          >
-            <img
-              className="w-auto mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
-              src={data.sprites.front_default}
-              alt="Sunset in the mountains"
-            />
-            <div className="px-6 py-4">
-              <div className="text-gray-700 dark:text-white capitalize font-fredoka font-semibold text-center mb-2">
-                {data.name}
+        {loading ? (
+          <h1>Loading</h1>
+        ) : (
+          pokemons.map(({ data }) => (
+            <div
+              key={data.id}
+              className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg"
+            >
+              <img
+                className="w-auto mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
+                src={data.sprites.front_default}
+                alt="Sunset in the mountains"
+              />
+              <div className="px-6 py-4">
+                <div className="text-gray-700 dark:text-white capitalize font-fredoka font-semibold text-center mb-2">
+                  {data.name}
+                </div>
+                <p className="text-gray-700 dark:text-white font-fredoka font-medium text-center">
+                  Experiencia : {data.base_experience}
+                </p>
               </div>
-              <p className="text-gray-700 dark:text-white font-fredoka font-medium text-center">
-                Experiencia : {data.base_experience}
-              </p>
             </div>
-          </div>
-        ))}
+          ))
+        )}
         {pokemons.length === 0 && <div>No hasy</div>}
       </div>
     </section>
