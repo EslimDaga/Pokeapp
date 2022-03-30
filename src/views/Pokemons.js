@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { SearchCircleIcon, XCircleIcon, ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
+import { Grid } from "react-loader-spinner";
 
 const ClearInput = styled.div`
   position: absolute;
@@ -43,9 +44,11 @@ const Pokemons = () => {
     filterPokemon(e.target.value)
   }
 
-  const filterPokemon = (terminoBusqueda) => {
+  const filterPokemon = (search_value) => {
     let resultSearch = listPokemons.filter((element) => {
-      return element.data.name.toLowerCase().includes(terminoBusqueda.toLowerCase());
+      return element.data.name
+        .toLowerCase()
+        .includes(search_value.toLowerCase());
     });
     setPokemons(resultSearch)
   }
@@ -107,11 +110,16 @@ const Pokemons = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {loading ? (
-          <h1>Loading</h1>
-        ) : (
-          pokemons.map(({ data }) => (
+      {loading ? (
+        <div className="flex justify-center items-center h-4/5">
+          <Grid
+            ariaLabel="loading-indicator"
+            color="#1E40AF"
+          />
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {pokemons.map(({ data }) => (
             <div
               key={data.id}
               className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg"
@@ -130,10 +138,10 @@ const Pokemons = () => {
                 </p>
               </div>
             </div>
-          ))
-        )}
-        {pokemons.length <= 0 && !loading && <div>No hasy</div>}
-      </div>
+          ))}
+        </div>
+      )}
+      {pokemons.length <= 0 && !loading && <div>No hasy</div>}
     </section>
   );
 }
