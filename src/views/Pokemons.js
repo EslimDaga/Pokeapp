@@ -126,7 +126,7 @@ const Pokemons = () => {
             </div>
           ))
         )}
-        {pokemons.length === 0 && <div>No hasy</div>}
+        {pokemons.length <= 0 && !loading && <div>No hasy</div>}
       </div>
     </section>
   );
