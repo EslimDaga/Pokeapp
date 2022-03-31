@@ -132,7 +132,7 @@ const Pokemons = () => {
           {pokemons.map(({ data }) => (
             <div
               key={data.id}
-              className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform transition duration-500 hover:scale-105 cursor-pointer"
+              className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform hover:scale-105"
             >
               <img
                 className="w-auto mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
