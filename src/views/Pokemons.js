@@ -115,7 +115,10 @@ const Pokemons = () => {
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
             20,
           ].map((i) => (
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-4 max-w-sm w-full mx-auto overflow-hidden shadow-lg" key={i}>
+            <div
+              className="bg-white dark:bg-gray-900 rounded-xl p-4 max-w-sm w-full mx-auto overflow-hidden shadow-lg"
+              key={i}
+            >
               <div className="animate-pulse">
                 <div className="mx-auto rounded-lg bg-slate-200 dark:bg-gray-700 h-24 w-24"></div>
                 <div className="w-24 h-4 mt-4 mb-2 mx-auto bg-slate-200 dark:bg-gray-700 rounded"></div>
@@ -129,7 +132,7 @@ const Pokemons = () => {
           {pokemons.map(({ data }) => (
             <div
               key={data.id}
-              className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg"
+              className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform transition duration-500 hover:scale-105 cursor-pointer"
             >
               <img
                 className="w-auto mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
