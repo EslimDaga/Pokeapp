@@ -10,6 +10,10 @@ const ClearInput = styled.div`
   cursor: pointer;
 `
 
+const PokemonCard = styled.div`
+  cursor: pointer;
+`
+
 const Pokemons = () => {
 
   const [listPokemons, setListPokemons] = useState([]);
@@ -130,7 +134,7 @@ const Pokemons = () => {
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {pokemons.map(({ data }) => (
-            <div
+            <PokemonCard
               key={data.id}
               className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform hover:scale-105"
             >
@@ -147,7 +151,7 @@ const Pokemons = () => {
                   Experiencia : {data.base_experience}
                 </p>
               </div>
-            </div>
+            </PokemonCard>
           ))}
         </div>
       )}
