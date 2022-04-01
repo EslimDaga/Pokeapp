@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { SearchCircleIcon, XCircleIcon, ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
@@ -69,6 +70,8 @@ const Pokemons = () => {
     setLink(next)
   }
 
+  const navigate = useNavigate();
+
   return (
     <section className="flex-1 overflow-y-auto px-4 py-4 bg-gray-100 dark:bg-gray-800">
       <div className="relative sm:flex md:flex lg:flex justify-between items-center mb-4">
@@ -135,6 +138,9 @@ const Pokemons = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {pokemons.map(({ data }) => (
             <PokemonCard
+              onClick={() => {
+                navigate(`/pokemon/${data.name}`)
+              }}
               key={data.id}
               className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform hover:scale-105"
             >
