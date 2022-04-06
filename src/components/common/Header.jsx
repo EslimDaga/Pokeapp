@@ -29,6 +29,12 @@ export default function Header() {
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
             <Link
+              to="/"
+              className="font-fredoka font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900"
+            >
+              Pokemones
+            </Link>
+            <Link
               to="/wath-pokemon-am-i"
               className="font-fredoka font-medium text-gray-500 dark:text-gray-200 hover:text-gray-900"
             >
@@ -75,12 +81,18 @@ export default function Header() {
             </div>
             <div className="py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a
-                  href="/"
+                <Link
+                  to="/"
+                  className="font-fredoka font-medium text-gray-900 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-50"
+                >
+                  Pokemones
+                </Link>
+                <Link
+                  to="/wath-pokemon-am-i"
                   className="font-fredoka font-medium text-gray-900 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-50"
                 >
                   ¿Que pokemon soy?
-                </a>
+                </Link>
               </div>
               <a
                 href="/"
