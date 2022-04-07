@@ -145,8 +145,8 @@ const Pokemons = () => {
               className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform hover:scale-105"
             >
               <img
-                className="w-auto mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
-                src={data.sprites.front_default}
+                className="w-40 mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
+                src={data.sprites.other.home.front_default}
                 alt="Sunset in the mountains"
               />
               <div className="px-6 py-4">
