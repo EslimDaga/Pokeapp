@@ -60,11 +60,11 @@ const Pokemon = () => {
                 href="#images"
                 role="tablist"
               >
-                Imagenes
+                Imágenes
               </a>
             </li>
           </ul>
-          <div className="relative flex flex-col min-w-0 break-words bg-white dark:bg-gray-900 w-full mb-6 shadow-lg rounded">
+          <div className="relative flex flex-col min-w-0 break-words bg-white dark:bg-gray-900 w-full mb-6 shadow-lg rounded-xl">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div
@@ -72,21 +72,31 @@ const Pokemon = () => {
                   id="profile"
                 >
                   <div>
-                    <h2 className="flex text-3xl font-fredoka font-semibold capitalize text-gray-700 dark:text-white sm:text-4xl">
+                    <h2 className="block sm:flex md:flex lg:flex text-3xl font-fredoka font-semibold capitalize items-center text-center text-gray-700 dark:text-white sm:text-4xl justify-between">
                       {item.name}
-                    </h2>
-                    <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
-                      <div className="border-t border-gray-200 pt-4">
-                        <dt className="font-fredoka font-medium capitalize text-gray-900">
-                          Habilidades
-                        </dt>
-                        <dd className="mt-2 text-sm font-fredoka capitalize text-gray-500">
-                          {item.abilities.map(({ability}) => {
-                            return console.log(ability);
-                          })}
-                        </dd>
+                      <div className="justify-center flex sm:flex md:flex lg:flex">
+                        <img
+                          src={item.sprites.front_default}
+                          alt={item.sprites.front_default}
+                          className="w-14 sm:w-14 md:w-14 lg:w-14"
+                        />
+                        <img
+                          src={item.sprites.back_default}
+                          alt={item.sprites.back_default}
+                          className="w-14 sm:w-14 md:w-14 lg:w-14"
+                        />
+                        <img
+                          src={item.sprites.front_shiny}
+                          alt={item.sprites.front_shiny}
+                          className="w-14 sm:w-14 md:w-14 lg:w-14"
+                        />
+                        <img
+                          src={item.sprites.back_shiny}
+                          alt={item.sprites.back_shiny}
+                          className="w-14 sm:w-14 md:w-14 lg:w-14"
+                        />
                       </div>
-                    </dl>
+                    </h2>
                   </div>
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden"} id="images">
