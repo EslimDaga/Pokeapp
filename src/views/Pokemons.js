@@ -127,7 +127,7 @@ const Pokemons = () => {
               key={i}
             >
               <div className="animate-pulse">
-                <div className="mx-auto rounded-lg bg-slate-200 dark:bg-gray-700 h-24 w-24"></div>
+                <div className="mx-auto rounded-lg bg-slate-200 dark:bg-gray-700 h-40 w-40"></div>
                 <div className="w-24 h-4 mt-4 mb-2 mx-auto bg-slate-200 dark:bg-gray-700 rounded"></div>
                 <div className="w-28 sm:w-28 md:w-40 lg-48 h-6 mx-auto bg-slate-200 dark:bg-gray-700 rounded"></div>
               </div>
@@ -139,7 +139,7 @@ const Pokemons = () => {
           {pokemons.map(({ data }) => (
             <PokemonCard
               onClick={() => {
-                navigate(`/pokemon/${data.name}`)
+                navigate(`/pokemon/${data.name}`);
               }}
               key={data.id}
               className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform hover:scale-105"
