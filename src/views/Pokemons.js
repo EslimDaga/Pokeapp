@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styled from "styled-components";
-import { SearchCircleIcon, XCircleIcon, ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
-
-const ClearInput = styled.div`
-  position: absolute;
-  top: 1rem;
-  left: 0.75rem;
-  cursor: pointer;
-`
-
-const PokemonCard = styled.div`
-  cursor: pointer;
-`
+import InputFilterPokemon from "../components/common/InputFilterPokemon";
+import ButtonPaddingPokemons from "../components/common/ButtonPaddingPokemons";
+import LoaderPokemons from "../components/common/LoaderPokemons";
+import Pokemon from "../components/Pokemons/Pokemon";
 
 const Pokemons = () => {
 
@@ -75,93 +66,28 @@ const Pokemons = () => {
   return (
     <section className="flex-1 overflow-y-auto px-4 py-4 bg-gray-100 dark:bg-gray-800">
       <div className="relative sm:flex md:flex lg:flex justify-between items-center mb-4">
-        <div className="relative">
-          <input
-            type="text"
-            className="w-full sm:w-64 md:w-64 lg-64 h-14 bg-white dark:bg-gray-900 placeholder:text-gray-600 text-gray-700 dark:text-white pr-8 pl-11 rounded-lg z-0 focus:shadow focus:outline-yellow-400 dark:focus:shadow dark:focus:outline-none font-fredoka font-normal"
-            placeholder="Buscar Pokemon"
-            value={filtering}
-            onChange={handleChange}
-          />
-          {filtering.length > 0 ? (
-            <ClearInput onClick={clearFilter}>
-              <XCircleIcon className="w-6 h-6 text-red-500" />
-            </ClearInput>
-          ) : (
-            <div className="absolute top-4 left-3">
-              <SearchCircleIcon className="w-6 h-6 text-gray-600" />
-            </div>
-          )}
-        </div>
-        <div className="flex justify-center pt-4 sm:pt-0 md:pt-0 lg:pt-0">
-          {filtering.length <= 0 && (
-            <>
-              <button
-                onClick={() => previousPage(paging.previous)}
-                disabled={paging.previous ? false : true}
-                className={
-                  !paging.previous ? "cursor-not-allowed opacity-50" : ""
-                }
-              >
-                <ArrowCircleLeftIcon className="w-10 h-10 text-blue-800 dark:text-gray-600" />
-              </button>
-              <button
-                onClick={() => nextPage(paging.next)}
-                disabled={paging.next ? false : true}
-                className={!paging.next ? "cursor-not-allowed opacity-50" : ""}
-              >
-                <ArrowCircleRightIcon className="w-10 h-10 text-blue-800 dark:text-gray-600" />
-              </button>
-            </>
-          )}
-        </div>
+        <InputFilterPokemon
+          filtering={filtering}
+          handleChange={handleChange}
+          clearFilter={clearFilter}
+        />
+        <ButtonPaddingPokemons
+          filtering={filtering}
+          previousPage={previousPage}
+          nextPage={nextPage}
+          paging={paging}
+        />
       </div>
       {loading ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {[
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-            20,
-          ].map((i) => (
-            <div
-              className="bg-white dark:bg-gray-900 rounded-xl p-4 max-w-sm w-full mx-auto overflow-hidden shadow-lg"
-              key={i}
-            >
-              <div className="animate-pulse">
-                <div className="mx-auto rounded-lg bg-slate-200 dark:bg-gray-700 h-40 w-40"></div>
-                <div className="w-24 h-4 mt-4 mb-2 mx-auto bg-slate-200 dark:bg-gray-700 rounded"></div>
-                <div className="w-28 sm:w-28 md:w-40 lg-48 h-6 mx-auto bg-slate-200 dark:bg-gray-700 rounded"></div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <LoaderPokemons />
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {pokemons.map(({ data }) => (
-            <PokemonCard
-              onClick={() => {
-                navigate(`/pokemon/${data.name}`);
-              }}
-              key={data.id}
-              className="max-w-sm rounded-xl bg-white dark:bg-gray-900 overflow-hidden shadow-lg transform hover:scale-105"
-            >
-              <img
-                className="w-40 mx-auto mt-4 rounded-lg bg-gray-200 dark:bg-gray-700"
-                src={data.sprites.other.home.front_default}
-                alt="Sunset in the mountains"
-              />
-              <div className="px-6 py-4">
-                <div className="text-gray-700 dark:text-white capitalize font-fredoka font-semibold text-center mb-2">
-                  {data.name}
-                </div>
-                <p className="text-gray-700 dark:text-white font-fredoka font-medium text-center">
-                  Experiencia : {data.base_experience}
-                </p>
-              </div>
-            </PokemonCard>
+            <Pokemon key={data.id} navigate={navigate} data={data} />
           ))}
         </div>
       )}
-      {pokemons.length <= 0 && !loading && <div>No hasy</div>}
+      {pokemons.length <= 0 && !loading && <div className="font-fredoka font-medium">No se han encontrado coincidencias.</div>}
     </section>
   );
 }
