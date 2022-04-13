@@ -17,6 +17,8 @@ const PokemonCard = styled.div`
 
 const Pokemons = () => {
 
+  const navigate = useNavigate();
+
   const [listPokemons, setListPokemons] = useState([]);
   const [pokemons, setPokemons] = useState([]);
   const [filtering, setFiltering] = useState("");
@@ -69,8 +71,6 @@ const Pokemons = () => {
   const nextPage = (next) => {
     setLink(next)
   }
-
-  const navigate = useNavigate();
 
   return (
     <section className="flex-1 overflow-y-auto px-4 py-4 bg-gray-100 dark:bg-gray-800">
