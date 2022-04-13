@@ -100,7 +100,7 @@ const Pokemon = () => {
                       />
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 sm:gap-y-6 lg:gap-x-4">
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 sm:gap-y-6 lg:gap-x-4 justify-items-center">
                     {item.stats.map((stat) => (
                       <ProgressBar
                         key={stat.stat.name}
