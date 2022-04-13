@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Pokemon from "./views/Pokemon";
+import Pokemon from "./views/PokemonById";
 import Pokemons from "./views/Pokemons";
 import WhatPokemonAmI from "./views/WhatPokemonAmI";
 
